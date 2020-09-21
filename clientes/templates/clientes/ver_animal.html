@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{%block conteudo-esquerda%}
+<div class="home_page-esquerda">
+    <section class="botao" style="padding-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Tutor</a>
+            <a href="#">Plano</a>
+        </div>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Administração</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'consulta' %}">Histórico de consultas</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="{% url 'index' %}">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'clientes' %}">Tutores cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+
+{%endblock%}
+
+
+{%block conteudo-direita%}
+<div class="nome_cadastro">
+    <p class="fa fa-paw"></p>
+    <h1>{{ animal.animal }}</h1>
+    <div>
+        <h1 style="padding-left: 10px; color:black;">{{animal.raca}}</h1>
+    </div>
+</div>
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Dados_cadastro_1')">Dados de cadastro</button>
+    <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados do animal</button>
+    {% if animal.vacina_set.all or animal.consulta_set.all or animal.cirurgia_set.all%}
+    <button class="tablinks" onclick="openCity(event, 'historico_1')">Histórico</button>
+    {% endif %}
+</div>
+<div id="Dados_cadastro_1" class="tabcontent">
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Data de criação</p>
+        <p class="informacao2">{{  animal.data_criacao|date:'d/m/Y' }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Nome do tutor</p>
+        <p class="informacao2">{{ animal.tutor }}</p>
+    </div>
+
+
+    {% for cliente in clientes %}
+        {% if animal.tutor == cliente %}
+            <div class="conteudo_cadastro_div">
+                <p class="informacao1">Telefone</p>
+                <p class="informacao2">{{ cliente.telefone }}</p>
+            </div>
+            <div class="conteudo_cadastro_div">
+                <p class="informacao1">Email</p>
+                <p class="informacao2">{{ cliente.email }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Plano</p>
+        <p class="informacao2">{{ animal.plano }}</p>
+    </div>
+</div>
+
+<div id="Dados_animal_1" class="tabcontent">
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Nome</p>
+        <p class="informacao2">{{  animal.animal }}</p>
+    </div>
+    {% if animal.especie %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Espécie</p>
+        <p class="informacao2">{{ animal.especie }}</p>
+    </div>
+    {% endif %}
+    {% if animal.raca %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Raça</p>
+        <p class="informacao2">{{ animal.raca }}</p>
+    </div>
+    {% endif %}
+    {% if animal.sexo %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Sexo</p>
+        <p class="informacao2">{{ animal.sexo }}</p>
+    </div>
+    {% endif %}
+    {% if animal.peso %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Peso</p>
+        <p class="informacao2"> {{ animal.peso }} </p>
+    </div>
+    {% endif %}
+    {% if animal.data_nascimento %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Data de nascimento</p>
+        <p class="informacao2">{{ animal.data_nascimento }}</p>
+    </div>
+    {% endif %}
+    {% if animal.porte %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Tamanho/porte</p>
+        <p class="informacao2"> {{animal.porte}} </p>
+    </div>
+    {% endif %}
+    {% if animal.pelagem %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Pelagem</p>
+        <p class="informacao2"> {{ animal.pelagem }} </p>
+    </div>
+    {% endif %}
+    {% if animal.descricao %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Observações</p>
+        <p class="informacao2">{{ animal.descricao }}</p>
+    </div>
+    {% endif %}
+    {% if animal.microchip_numero %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Número do microchip</p>
+        <p class="informacao2">{{ animal.microchip_numero }}</p>
+    </div>
+    {% endif %}
+    {% if animal.microchip_local %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Localização do microchip</p>
+        <p class="informacao2">{{ animal.microchip_local }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<div id="historico_1" class="tabcontent">
+    {% if animal.vacina_set.all%}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Vacinas</p>
+        {% for vacina in animal.vacina_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  vacina.data|date:'d/m/Y' }}</a>
+            <p>{{ vacina.vacina}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if animal.consulta_set.all%}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Consultas</p>
+        {% for consulta in animal.consulta_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  consulta.data|date:'d/m/Y' }}</a>
+            <p>{{ consulta.consulta}}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+    {% if animal.cirurgia_set.all%}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Cirurgias</p>
+        {% for cirurgia in animal.cirurgia_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  cirurgia.data|date:'d/m/Y' }}</a>
+            <p>{{ cirurgia.cirurgia}}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+</div>
+
+{%endblock%}

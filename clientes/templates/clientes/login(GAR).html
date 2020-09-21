@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<style>
+    body {
+        font-family: Poppins, sans-serif;
+    }
+
+    .login_background {
+        background-image: url("background.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 210%;
+    }
+
+    .login {
+        display: flex;
+        width: 100%;
+        margin-bottom: 0;
+        height: 90%;
+    }
+
+    .login_esquerda {
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 49%;
+        padding-right: 15px;
+        text-align: right;
+    }
+
+    .login_direita {
+        border-left: #E9ECF2 solid 1px;
+        padding-left: 15px;
+        width: 49%;
+        margin: auto;
+        text-align: left;
+    }
+
+    .loging_logo {
+        color: #F29E38;
+        width: 260px;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .login_login {
+        background-color: #E9ECF2;
+        width: 300px;
+        text-align: center;
+        border-radius: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .login_area {
+        border-style: none;
+        width: 220px;
+        /* background-color: violet; */
+        margin-left: -3px;
+        outline: none;
+    }
+
+    .form_icon {
+        width: 250px;
+        background-color: white;
+        height: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .fa-lock {
+        color: grey;
+        text-align: center;
+        padding: 7px;
+    }
+
+    .fa-user {
+        color: grey;
+        text-align: center;
+        padding: 7px;
+    }
+
+    .login_submit {
+        margin-top: 10px;
+        background-color: #F29E38;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 16px;
+        width: 150px;
+        height: 30px;
+        padding: 5px;
+        border-style: none;
+        border-radius: 25px;
+    }
+
+    .login_login a {
+        text-decoration: none;
+        font-style: italic;
+        color: black;
+        font-size: 12px;
+    }
+
+    .login_login a:hover {
+        text-decoration: underline;
+    }
+
+    .login_new {
+        width: 300px;
+        text-align: center;
+        color: #8F96A6;
+        font-size: 13px;
+    }
+
+    .login_new a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #8F96A6;
+    }
+
+    .login_new a:hover {
+        text-decoration: underline;
+    }
+
+    #messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+</style>
+
+<body class="login_background">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="login">
+        <div class="login_esquerda">
+            <div class="loging_logo">
+                <h1>
+                    <i class="fa fa-paw"></i>
+                    Projeto VET
+                </h1>
+            </div>
+        </div>
+        <div class="login_direita">
+            <div class="login_login">
+                <form action="#">
+                    <div class="form_icon">
+                        <i class="fa fa-user"></i>
+                        <input class="login_area" type="text" id="fname" value="" placeholder="E-mail"><br>
+                    </div>
+                    <div class="form_icon">
+                        <i class="fa fa-lock"></i>
+                        <input class="login_area" type="password" id="fname" value="" placeholder="Senha"><br>
+                    </div>
+                    <input class="login_submit" type="submit" value="Login">
+                </form>
+                <a href="#">Esqueceu a senha?</a>
+            </div>
+            <div class="login_new">
+                <p>Ainda não tem uma conta? <a href="#">Crie agora</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

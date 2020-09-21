@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block conteudo-esquerda %}
+<div class="home_page-esquerda">
+    <section class="botao" style="padding-top: 15px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Tutor</a>
+            <a href="#">Plano</a>
+        </div> 
+    </section>
+    <section>
+        <a class="links-principais" href="#">Administração</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'consulta' %}">Histórico de consultas</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="{% url 'index' %}">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'clientes' %}">Clientes cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+{% endblock %}
+
+{%block conteudo-direita%}
+<div class="home_page-direita">
+    <section class="titulo">
+        <p>Animal</p>
+        <p>Espécie</p>
+        <p>Raça</p>
+        <p>Tutor</p>
+        <p>Plano</p>
+    </section>
+    {% for animal in animais %}
+        {% for cliente in clientes %}
+            {% if animal.tutor == cliente %}
+                {% if animal.mostrar %}
+                    <section>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.animal}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.especie}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.raca}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente}}</a>
+                        </p>
+                        <p> {{animal.plano}} </p>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+</div>
+
+{%endblock%}

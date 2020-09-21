@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block conteudo-esquerda %}
+<div class="home_page-esquerda">
+    <section class="botao" style="padding-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Tutor</a>
+            <a href="#">Plano</a>
+        </div>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Agenda</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Histórico</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tutores cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="#">Tipos de plano</a>
+    </section>
+</div>
+{% endblock %}
+
+{% block conteudo-direita %}
+<div class="home_page-direita">
+    <section>
+        <p>Plano</p>
+        <p class="plano">Benefícios</p>
+        <p>Valor por mês</p>
+    </section>
+    <section>
+        <p><a href="#">VIP</a></p>
+        <p class="plano">
+            <a>Consultas de graça e banho e tosa 1x por semana</a>
+            <a>Consultas de graça e banho e tosa 1x por semana</a>
+        </p>
+        <p>R$ 100,00</p>
+    </section>
+    <section>
+        <p><a href="#">Nenhum</a></p>
+        <p class="plano">
+            <a>Nada</a>
+        </p>
+        <p>R$ 0,00</p>
+    </section>
+</div>
+{% endblock %}

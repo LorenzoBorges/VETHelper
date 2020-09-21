@@ -1,0 +1,25 @@
+{% load static %}
+
+<style>
+    .hello-msg{
+        font-size: 18px;
+        color: white;
+        margin-right: 20px;
+    }
+
+</style>
+
+<head>
+    <div class="navbar">
+        <div class="navbar-esquerda">
+            <a href="{% url 'index' %}"></a>
+        </div>
+        <input type="text" placeholder="Pesquisar">
+        <div class="navbar-direita">
+            <a href="#" class="fa fa-sort-down"></a>
+            <span class='hello-msg'>Olá, {{request.user}}</span>
+            <span> <a class='hello-msg' href='{% url "logout" %}'> Sair </a></span>
+        </div>
+    </div>
+
+</head>

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block conteudo-esquerda %}
+<div class="home_page-esquerda">
+    <section class="botao" style="padding-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Tutor</a>
+            <a href="#">Plano</a>
+        </div>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Agenda</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Histórico</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="#">Tutores cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+{% endblock %}
+
+{% block conteudo-direita %}
+<div class="home_page-direita">
+    <section>
+        <p>Nome</p>
+        <p>Telefone</p>
+        <p>Animal(is)</p>
+        <p>Plano</p>
+        <p>Última consulta</p>
+    </section>
+    <section>
+        <p>
+            <a href="#">Gabriela</a>
+        </p>
+        <p>(47) 98832-4188</p>
+        <p class="animais">
+            <a href="#">Pitoco</a>
+        </p>
+        <p>
+            <a href="#">VIP</a>
+        </p>
+        <p>
+            <a href="#">22/04/2020</a>
+        </p>
+    </section>
+    <section>
+        <p>
+            <a href="#">Joaquim</a>
+        </p>
+        <p>(47) 98832-4188</p>
+        <p class="animais">
+            <a href="#">Bilu</a>
+            <a href="#">Floquinho</a>
+        </p>
+        <p>
+            <a href="#">Nenhum</a>
+        </p>
+        <p>
+            <a href="#">22/04/2020</a>
+        </p>
+    </section>
+</div>
+{% endblock %}

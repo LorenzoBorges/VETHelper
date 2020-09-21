@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  {% include 'parciais/_head.html' %}
+</head>
+
+<body>
+
+  {% include 'parciais/_nav.html' %}
+
+	<div class="conteudo">
+		<div class="conteudo-esquerda">
+			{% block conteudo-esquerda %}{% endblock %}
+			{% include 'parciais/_footer.html' %}
+		</div>
+
+		<div class="conteudo-direita">
+			{% block conteudo-direita %}{% endblock %}
+
+		</div>
+
+</body>
+
+</html>
