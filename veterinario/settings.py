@@ -122,3 +122,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates/static'),
 ]
+
+# email stuff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'noreply.vethelper@gmail.com'
+EMAIL_USE_SSL = True 
+DEFAULT_FROM_EMAIL = 'noreply.vethelper@gmail.com'
+EMAIL_PORT = 465  
+EMAIL_HOST_PASSWORD = 'Animalsarecute6'

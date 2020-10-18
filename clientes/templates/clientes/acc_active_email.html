@@ -1,0 +1,9 @@
+{% autoescape off %} 
+
+Olá administrador,  
+Por favor, clique no link para confirmar o registro do usuário "{{user.username}}".
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+Se você acredita que foi um engano, por favor, ignore esse email.
+
+{% endautoescape %}
