@@ -2,7 +2,7 @@
 
 {% block conteudo-esquerda %}
 <div class="home_page-esquerda">
-    <section class="botao" style="padding-top: 15px;">
+    <section class="botao" style="margin-top: 35px;">
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
             <a href="#">Consulta</a>
@@ -12,7 +12,7 @@
         </div> 
     </section>
     <section>
-        <a class="links-principais" href="#">Administração</a>
+        <a class="links-principais" href="{% url 'admin:index' %}">Administração</a>
     </section>
     <section>
         <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
