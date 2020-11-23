@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import inlineformset_factory
 from .models import Animal, Vacina, Tutor, Consulta, Cirurgia
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from .forms import CreateUserForm, TutorForm, AnimalForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -173,3 +173,81 @@ def ver_cirurgia(request, cirurgia_id):
         'animais': animais,
         'cirurgia': cirurgia,
     })
+
+@login_required(login_url='login')
+def criarCliente(request):
+
+    form = TutorForm()
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        form = TutorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('clientes')
+
+    context = {'form':form}
+    return render(request, 'clientes/clientes_form.html', context)
+
+@login_required(login_url='login')
+def atualizarCliente(request, pk):
+
+    tutor = Tutor.objects.get(id=pk)
+    form = TutorForm(instance=tutor)
+
+    if request.method == 'POST':
+        form = TutorForm(request.POST, instance=tutor)
+        if form.is_valid():
+            form.save()
+            return redirect('clientes')
+
+    context = {'form':form}
+    return render(request, 'clientes/clientes_form.html', context)
+
+@login_required(login_url='login')
+def deletarCliente(request, pk):
+    tutor = Tutor.objects.get(id=pk)
+    if request.method == "POST":
+        tutor.delete()
+        return redirect('clientes')
+
+    context = {'item':tutor}
+    return render(request, 'clientes/delete_cliente.html', context)
+
+@login_required(login_url='login')
+def criarAnimal(request):
+
+    form = AnimalForm()
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        form = AnimalForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    context = {'form':form}
+    return render(request, 'clientes/animal_form.html', context)
+
+@login_required(login_url='login')
+def atualizarAnimal(request, pk):
+
+    animal = Animal.objects.get(id=pk)
+    form = AnimalForm(instance=animal)
+
+    if request.method == 'POST':
+        form = TutorForm(request.POST, instance=animal)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form':form}
+    return render(request, 'clientes/animal_form.html', context)
+
+@login_required(login_url='login')
+def deletarAnimal(request, pk):
+    animal = Animal.objects.get(id=pk)
+    if request.method == "POST":
+        animal.delete()
+        return redirect('index')
+
+    context = {'item':animal}
+    return render(request, 'clientes/delete_animal.html', context)

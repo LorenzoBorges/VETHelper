@@ -16,4 +16,10 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutUser, name='logout'),
     path('activate/<uidb64>/<token>/',views.activate, name='activate'), 
+    path('criar_cliente/', views.criarCliente, name='criar_cliente'), 
+    path('atualizar_cliente/<str:pk>/', views.atualizarCliente, name='atualizar_cliente'),
+    path('deletar_cliente/<str:pk>/', views.deletarCliente, name='deletar_cliente'),
+    path('criar_animal/', views.criarAnimal, name='criar_animal'), 
+    path('atualizar_animal/<str:pk>/', views.atualizarAnimal, name='atualizar_animal'),
+    path('deletar_animal/<str:pk>/', views.deletarAnimal, name='deletar_animal'),
 ]

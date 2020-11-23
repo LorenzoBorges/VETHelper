@@ -6,8 +6,8 @@
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
             <a href="#">Consulta</a>
-            <a href="#">Animal</a>
-            <a href="#">Tutor</a>
+            <a href="{% url 'criar_animal' %}">Animal</a>
+            <a href="{% url 'criar_cliente' %}">Tutor</a>
             <a href="#">Plano</a>
         </div> 
     </section>
@@ -42,6 +42,8 @@
         <p>Telefone</p>
         <p>Email</p>
         <p>Data</p>
+        <p>Atualizar</p>
+        <p>Deletar</p>
     </section>
     {% for cliente in clientes %}
     <section>
@@ -56,6 +58,12 @@
         </p>
         <p>
             <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.data_criacao_tutor}}</a>
+        </p>
+        <p>
+            <a href="{% url 'atualizar_cliente' cliente.id %}">Atualizar</a>
+        </p>
+        <p>
+            <a href="{% url 'deletar_cliente' cliente.id %}">Deletar</a>
         </p>
     </section>
     {% endfor %}

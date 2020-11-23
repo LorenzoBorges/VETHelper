@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block conteudo-esquerda %}
+<div class="home_page-esquerda">
+    <section class="botao" style="margin-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="{% url 'criar_cliente' %}">Tutor</a>
+            <a href="#">Plano</a>
+        </div> 
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'admin:index' %}">Administração</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'consulta' %}">Histórico de consultas</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'index' %}">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="{% url 'clientes' %}">Clientes cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+{% endblock %}
+
+{%block conteudo-direita%}
+<form action = "" method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <input type="submit" name="Criar">
+</form>
+
+{% endblock%}
