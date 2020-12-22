@@ -234,7 +234,7 @@ def atualizarAnimal(request, pk):
     form = AnimalForm(instance=animal)
 
     if request.method == 'POST':
-        form = TutorForm(request.POST, instance=animal)
+        form = AnimalForm(request.POST, instance=animal)
         if form.is_valid():
             form.save()
             return redirect('/')
