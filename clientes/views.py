@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import inlineformset_factory
 from .models import Animal, Vacina, Tutor, Consulta, Cirurgia
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, TutorForm, AnimalForm, VacinaForm
+from .forms import CreateUserForm, TutorForm, AnimalForm, VacinaForm, ConsultaForm, CirurgiaForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -290,3 +290,81 @@ def deletarVacina(request, pk):
 
     context = {'item':vacina}
     return render(request, 'clientes/delete_vacina.html', context)
+
+@login_required(login_url='login')
+def criarConsulta(request):
+
+    form = ConsultaForm()
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        form = ConsultaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    context = {'form':form}
+    return render(request, 'clientes/consulta_form.html', context)
+
+@login_required(login_url='login')
+def atualizarConsulta(request, pk):
+
+    consulta = Consulta.objects.get(id=pk)
+    form = ConsultaForm(instance=consulta)
+
+    if request.method == 'POST':
+        form = ConsultaForm(request.POST, instance=consulta)
+        if form.is_valid():
+            form.save()
+            return redirect('consulta')
+
+    context = {'form':form}
+    return render(request, 'clientes/consulta_form.html', context)
+
+@login_required(login_url='login')
+def deletarConsulta(request, pk):
+    consulta = Consulta.objects.get(id=pk)
+    if request.method == "POST":
+        consulta.delete()
+        return redirect('consulta')
+
+    context = {'item':consulta}
+    return render(request, 'clientes/delete_consulta.html', context)
+
+@login_required(login_url='login')
+def criarCirurgia(request):
+
+    form = CirurgiaForm()
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        form = CirurgiaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('cirurgia')
+
+    context = {'form':form}
+    return render(request, 'clientes/cirurgia_form.html', context)
+
+@login_required(login_url='login')
+def atualizarCirurgia(request, pk):
+
+    cirurgia = Cirurgia.objects.get(id=pk)
+    form = CirurgiaForm(instance=cirurgia)
+
+    if request.method == 'POST':
+        form = ConsultaForm(request.POST, instance=cirurgia)
+        if form.is_valid():
+            form.save()
+            return redirect('cirurgia')
+
+    context = {'form':form}
+    return render(request, 'clientes/cirurgia_form.html', context)
+
+@login_required(login_url='login')
+def deletarCirurgia(request, pk):
+    cirurgia = Cirurgia.objects.get(id=pk)
+    if request.method == "POST":
+        cirurgia.delete()
+        return redirect('cirurgia')
+
+    context = {'item':cirurgia}
+    return render(request, 'clientes/delete_cirurgia.html', context)

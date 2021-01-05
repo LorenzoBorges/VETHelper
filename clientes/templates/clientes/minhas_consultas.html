@@ -5,8 +5,8 @@
     <section class="botao" style="margin-top: 35px;">
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
-            <a href="#">Consulta</a>
-            <a href="#">Cirurgia</a>
+            <a href="{% url 'criar_consulta' %}">Consulta</a>
+            <a href="{% url 'criar_cirurgia' %}">Cirurgia</a>
             <a href="{% url 'criar_vacina' %}">Vacina</a>
             <a href="{% url 'criar_animal' %}">Animal</a>
             <a href="{% url 'criar_cliente' %}">Tutor</a>
@@ -44,6 +44,8 @@
         <p>Animal</p>
         <p>Data</p>
         <p>Tutor</p>
+        <p>Atualizar</p>
+        <p>Deletar</p>
     </section>
 
 {% for consulta in consultas %}
@@ -61,6 +63,12 @@
                 </p>
                 <p>
                     <a href="{% url 'ver_consulta' consulta.id %}">{{animal.tutor}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'atualizar_consulta' consulta.id %}">Atualizar</a>
+                </p>
+                <p>
+                    <a href="{% url 'deletar_consulta' consulta.id %}">Deletar</a>
                 </p>
             </section>
         {% endif%}

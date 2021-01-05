@@ -25,4 +25,10 @@ urlpatterns = [
     path('criar_vacina/', views.criarVacina, name='criar_vacina'),
     path('atualizar_vacina/<str:pk>/', views.atualizarVacina, name='atualizar_vacina'),
     path('deletar_vacina/<str:pk>/', views.deletarVacina, name='deletar_vacina'),
+    path('criar_consulta/', views.criarConsulta, name='criar_consulta'),
+    path('atualizar_consulta/<str:pk>/', views.atualizarConsulta, name='atualizar_consulta'),
+    path('deletar_consulta/<str:pk>/', views.deletarConsulta, name='deletar_consulta'),
+    path('criar_cirurgia/', views.criarCirurgia, name='criar_cirurgia'),
+    path('atualizar_cirurgia/<str:pk>/', views.atualizarCirurgia, name='atualizar_cirurgia'),
+    path('deletar_cirurgia/<str:pk>/', views.deletarCirurgia, name='deletar_cirurgia'),
 ]
