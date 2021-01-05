@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import inlineformset_factory
 from .models import Animal, Vacina, Tutor, Consulta, Cirurgia
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, TutorForm, AnimalForm
+from .forms import CreateUserForm, TutorForm, AnimalForm, VacinaForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -251,3 +251,42 @@ def deletarAnimal(request, pk):
 
     context = {'item':animal}
     return render(request, 'clientes/delete_animal.html', context)
+
+@login_required(login_url='login')
+def criarVacina(request):
+
+    form = VacinaForm()
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        form = VacinaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    context = {'form':form}
+    return render(request, 'clientes/vacina_form.html', context)
+
+@login_required(login_url='login')
+def atualizarVacina(request, pk):
+
+    vacina = Vacina.objects.get(id=pk)
+    form = VacinaForm(instance=vacina)
+
+    if request.method == 'POST':
+        form = VacinaForm(request.POST, instance=vacina)
+        if form.is_valid():
+            form.save()
+            return redirect('vacina')
+
+    context = {'form':form}
+    return render(request, 'clientes/vacina_form.html', context)
+
+@login_required(login_url='login')
+def deletarVacina(request, pk):
+    vacina = Vacina.objects.get(id=pk)
+    if request.method == "POST":
+        vacina.delete()
+        return redirect('vacina')
+
+    context = {'item':vacina}
+    return render(request, 'clientes/delete_vacina.html', context)

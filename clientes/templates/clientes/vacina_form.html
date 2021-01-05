@@ -17,13 +17,13 @@
         <a class="links-principais" href="{% url 'admin:index' %}">Administração</a>
     </section>
     <section>
-        <a class="links-principais-especial" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
+        <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
     </section>
     <section>
         <a class="links-principais" href="{% url 'consulta' %}">Histórico de consultas</a>
     </section>
     <section>
-        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
+        <a class="links-principais-especial" href="{% url 'vacina' %}">Histórico de vacinas</a>
     </section>
     <section>
         <a class="links-principais" href="{% url 'index' %}">Animais cadastrados</a>
@@ -38,34 +38,11 @@
 {% endblock %}
 
 {%block conteudo-direita%}
-<div class="home_page-direita">
-    <section class="titulo">
-        <p>Cirurgia</p>
-        <p>Animal</p>
-        <p>Data</p>
-        <p>Tutor</p>
-    </section>
+<form action = "" method="POST">
+    {% csrf_token %}
+    {{form}}
 
-{% for cirurgia in cirurgias %}
-    {% for animal in animais %}
-        {% if animal == cirurgia.animal%}
-            <section>
-                <p>
-                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.cirurgia}}</a>
-                </p>
-                <p>
-                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.animal}}</a>
-                </p>
-                <p>
-                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.data}}</a>
-                </p>
-                <p>
-                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{animal.tutor}}</a>
-                </p>
-            </section>
-        {% endif%}
-    {% endfor %}
-{% endfor %}
-</div>
+    <input type="submit" name="Criar">
+</form>
 
-{%endblock%}
+{% endblock%}
