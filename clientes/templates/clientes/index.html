@@ -5,9 +5,11 @@
     <section class="botao" style="margin-top: 35px;">
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
-            <a href="#">Consulta</a>
-            <a href="#">Animal</a>
-            <a href="#">Tutor</a>
+            <a href="{% url 'criar_consulta' %}">Consulta</a>
+            <a href="{% url 'criar_cirurgia' %}">Cirurgia</a>
+            <a href="{% url 'criar_vacina' %}">Vacina</a>
+            <a href="{% url 'criar_animal' %}">Animal</a>
+            <a href="{% url 'criar_cliente' %}">Tutor</a>
             <a href="#">Plano</a>
         </div> 
     </section>
@@ -43,6 +45,8 @@
         <p>Raça</p>
         <p>Tutor</p>
         <p>Plano</p>
+        <p>Atualizar</p>
+        <p>Deletar</p>
     </section>
     {% for animal in animais %}
         {% for cliente in clientes %}
@@ -62,6 +66,12 @@
                             <a href="{% url 'ver_cliente' cliente.id %}">{{cliente}}</a>
                         </p>
                         <p> {{animal.plano}} </p>
+                        <p>
+                            <a href="{% url 'atualizar_animal' animal.id %}">Atualizar</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'deletar_animal' animal.id %}">Deletar</a>
+                        </p>
                     </section>
                 {% endif %}
             {% endif %}

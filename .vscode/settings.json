@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "d:\\Documentos\\Estudos\\Programação\\Arquivos Python\\Programas\\VETHelper\\venv\\Scripts\\python.exe",
+    "python.pythonPath": "venv\\Scripts\\python.exe",
     "git.ignoreLimitWarning": true,
 }
